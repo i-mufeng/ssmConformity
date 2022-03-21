@@ -33,6 +33,8 @@
 
     <!--放行静态文件-->
     <mvc:default-servlet-handler/>
+<!--    <mvc:resources mapping="swagger-ui.html" location="classpath:/META_INF/resources/"/>-->
+<!--    <mvc:resources mapping="/webjars/**" location="classpath:/META_INF/resources/webjars/"/>-->
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <!--视图解析器将模板引擎与数据结合后返回的字符集-->
