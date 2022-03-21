@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--根标签。属性：
+        scan="true"             如果该配置文件发生变化，则会重新加载
+        scanPeriod="1 minute"   检查配置文件变化的时间间隔
+        debug="true"            默认为 false 不会实时检测 logback的运行状况
+
+-->
+<configuration debug="false"
+        xmlns="http://ch.qos.logback/xml/ns/logback" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback
+        https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd">
+    <!--
+    代表写日志的组件，可以有很多个
+        必须属性：
+            name 唯一标识
+            class 指定class的全限定名
+                ConsoleAppender     将日志输出到控制台
+                FileAppender        将日志添加到文件中
+                RollingFileAppender 可以配合一些滚动策略将日志写入文件中
+    -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!--格式化-->
+        <encoder>
+            <charset>UTF-8</charset>
+            <!--格式      室间隔是        线程  日志级别（宽度5左对齐） 全类名（最多30字符） -->
+            <pattern>***%d{HH:mm:ss.SSS} [%thread] %-5level %logger{30}--%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--
+    level：日志级别
+        error warn info debug trance
+    -->
+    <root level="INFO">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>
